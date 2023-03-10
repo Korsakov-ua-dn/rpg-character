@@ -1,0 +1,40 @@
+@import "../../../../scss/variables.scss";
+
+.Input-text {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  & input {
+    height: inherit;
+    width: 100%;
+    padding-right: 10px;
+    background-color: transparent;
+    border: none;
+    font-size: 30px;
+    line-height: 36px;
+    // color: $font-color-grey;
+  }
+
+  & input:focus {
+    outline: none;
+  }
+
+  & .Input-text__view {
+    font-size: 30px;
+    line-height: 36px;
+    // color: $font-color-grey;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .Input-text {
+    & .Input-text__view,
+    & input {
+      font-size: 22px;
+      line-height: 20px;
+      height: 20px;
+    }
+  }
+}

@@ -2,6 +2,7 @@ import React, { useLayoutEffect } from 'react';
 
 import MainLayout from '../containers/main-layout';
 import { useAppDispatch } from '../hooks';
+import { Character } from '../modules/character-controller';
 
 const App: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -12,7 +13,7 @@ const App: React.FC = () => {
 
   return (
     <MainLayout>
-      <div>Start</div>
+      <Character />
     </MainLayout>
   );
 };

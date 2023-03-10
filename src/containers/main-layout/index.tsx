@@ -18,6 +18,8 @@ const MainLayout: React.FC<IProps> = (props) => {
       {select.loading && 'Загрузка информации...'}
 
       {select.error && select.error}
+
+      {props.children}
     </Layout>
   );
 };

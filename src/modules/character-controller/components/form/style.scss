@@ -1,0 +1,28 @@
+@import "../../../../scss/mixines.scss";
+@import "../../../../scss/variables.scss";
+
+.Form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.Form__field {
+  padding-bottom: 7px;
+}
+
+.Form__lable {
+  display: inline-block;
+  // font-family: $gilroy-regular;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  margin-bottom: 8px;
+  @include notBreakWord();
+}
+
+@media screen and (max-width: 767px) {
+  .Form__lable {
+    font-size: 14px;
+  }
+}

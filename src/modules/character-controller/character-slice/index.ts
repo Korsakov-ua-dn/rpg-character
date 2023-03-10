@@ -6,7 +6,7 @@ type CharacterState = {
 };
 
 export const initialState: CharacterState = {
-  loading: true,
+  loading: false,
   error: null,
 };
 
