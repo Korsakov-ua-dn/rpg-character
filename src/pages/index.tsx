@@ -1,8 +1,11 @@
 import React, { useLayoutEffect } from 'react';
+import { Route, Routes } from 'react-router-dom';
 
 import MainLayout from '../containers/main-layout';
 import { useAppDispatch } from '../hooks';
-import { Character } from '../modules/character-controller';
+
+import { Controls } from './controls';
+import { Game } from './game';
 
 const App: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -13,7 +16,10 @@ const App: React.FC = () => {
 
   return (
     <MainLayout>
-      <Character />
+      <Routes>
+        <Route path={'/'} element={<Controls />} />
+        <Route path={'/game'} element={<Game />} />
+      </Routes>
     </MainLayout>
   );
 };

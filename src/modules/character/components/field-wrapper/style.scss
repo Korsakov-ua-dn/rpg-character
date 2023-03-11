@@ -1,0 +1,25 @@
+@import "../../../../scss/variables.scss";
+
+.Setting-field {
+  width: 100%;
+  
+  & .Setting-field__inputs-wrapper {
+    position: relative;
+    height: 48px;
+    width: 100%;
+    padding: 12px 24px;
+    background-color: $color-grey;
+    border: 2px solid $color-grey;
+    border-radius: 8px;
+  }
+}
+
+.Setting-field.active {
+  & .Setting-field__inputs-wrapper {
+    background-color: transparent;
+  }
+}
+
+.Setting-field.disabled {
+  opacity: 0.4;
+}

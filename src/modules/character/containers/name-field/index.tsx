@@ -1,10 +1,10 @@
 import React, { MouseEvent, useCallback, useState } from 'react';
 import { useField } from 'formik';
 
-import InputText from '../input-text';
-import FieldWrapper from '../field-wrapper';
+import InputText from '../../components/input-text';
+import FieldWrapper from '../../components/field-wrapper';
 
-import type { FieldName } from '../character-settings-form';
+import type { FieldName } from '../add-character-form';
 
 type PropsType = {
   lable: string;

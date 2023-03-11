@@ -1,16 +1,15 @@
 @import "../../scss/mixines.scss";
 @import "../../scss/variables.scss";
 
-.Button {
-  height: 48px;
+.Link {
   width: fit-content;
-  padding: 0 24px;
-  border-radius: 24px;
+  height: 48px;
+  padding: 0 12px;
   background-color: $color-grey;
   @include flexCenter();
 }
 
-.Button:hover {
+.Link:hover {
   background-color: $color-active;
   color: #ffffff;
 }

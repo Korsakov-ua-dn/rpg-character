@@ -1,0 +1,22 @@
+@import "../../scss/mixines.scss";
+@import "../../scss/variables.scss";
+
+.Controls-layout {
+  width: 100%;
+  padding: 20px 0;
+  @include flexCenter();
+  align-items: flex-start;
+  gap: 20px;
+}
+
+@media screen and (max-width: 1119px) {
+  // .Controls-layout {
+  //   padding: 0 36px;
+  // }
+}
+
+@media screen and (max-width: 767px) {
+  // .Controls-layout {
+  //   padding: 0 20px;
+  // }
+}

@@ -2,7 +2,7 @@ import React from 'react';
 import './style.scss';
 
 interface IProps {
-  children: React.ReactNode | React.ReactNode[];
+  children: React.ReactNode | React.ReactNode[] | string;
 }
 
 const Layout: React.FC<IProps> = (props) => {

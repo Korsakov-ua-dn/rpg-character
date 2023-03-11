@@ -9,11 +9,11 @@ import { useField } from 'formik';
 
 import { prepareValue } from '../../utils/prepare-value';
 
-import InputText from '../input-text';
-import Range from '../range';
-import FieldWrapper from '../field-wrapper';
+import InputText from '../../components/input-text';
+import Range from '../../components/range';
+import FieldWrapper from '../../components/field-wrapper';
 
-import type { FieldName } from '../character-settings-form';
+import type { FieldName } from '../add-character-form';
 
 type PropsType = {
   lable: string;

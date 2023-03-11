@@ -1,6 +1,6 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 
-import { characterReducer } from '../modules/character-controller/character-slice';
+import { characterReducer } from '../modules/character';
 
 const rootReducer = combineReducers({
   character: characterReducer,

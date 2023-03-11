@@ -14,13 +14,13 @@ const MainLayout: React.FC<IProps> = (props) => {
   }));
 
   return (
-    <Layout>
-      {select.loading && 'Загрузка информации...'}
+    <>
+      {select.loading && <Layout>Загрузка информации...</Layout>}
 
-      {select.error && select.error}
+      {select.error && <Layout>{select.error}</Layout>}
 
       {props.children}
-    </Layout>
+    </>
   );
 };
 

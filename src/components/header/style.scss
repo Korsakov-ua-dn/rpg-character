@@ -1,0 +1,12 @@
+@import '../../scss/variables.scss';
+
+.Header {
+    height: 60px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    // border-bottom: 1px solid $color-grey;
+    background-color: $color-grey;
+}

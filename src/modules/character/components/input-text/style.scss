@@ -12,9 +12,7 @@
     padding-right: 10px;
     background-color: transparent;
     border: none;
-    font-size: 30px;
-    line-height: 36px;
-    // color: $font-color-grey;
+    font-size: 18px;
   }
 
   & input:focus {
@@ -22,8 +20,8 @@
   }
 
   & .Input-text__view {
-    font-size: 30px;
-    line-height: 36px;
+    font-size: 18px;
+    line-height: 20px;
     // color: $font-color-grey;
   }
 }
@@ -32,7 +30,7 @@
   .Input-text {
     & .Input-text__view,
     & input {
-      font-size: 22px;
+      font-size: 16px;
       line-height: 20px;
       height: 20px;
     }
