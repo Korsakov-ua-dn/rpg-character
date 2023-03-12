@@ -10,7 +10,12 @@
   @include flexCenter();
 }
 
-.Button:hover {
+.Button:enabled:hover {
   background-color: $color-active;
   color: #ffffff;
+}
+
+.Button:disabled {
+  opacity: 0.5;
+  cursor: auto;
 }

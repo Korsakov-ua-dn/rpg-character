@@ -11,7 +11,9 @@ interface IProps {
 const Header: React.FC<IProps> = (props) => {
   return (
     <header className="Header">
-      <Layout>{props.children}</Layout>
+      <Layout>
+        <div className="Header__container">{props.children}</div>
+      </Layout>
     </header>
   );
 };

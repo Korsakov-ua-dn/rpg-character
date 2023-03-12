@@ -1,8 +1,9 @@
 import React, { useCallback } from 'react';
+import { useNavigate } from 'react-router';
 
+import { Button } from '../../components/button';
 import { ControlsLayout } from '../../components/controls-layout';
 import Header from '../../components/header';
-import { Link } from '../../components/link';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import {
   AddCharacterForm,
@@ -13,9 +14,11 @@ import { Character } from '../../modules/character/character-slice';
 
 export const Controls: React.FC = React.memo(() => {
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
   const select = useAppSelector((state) => ({
     characters: state.character.data,
+    selected: state.character.selected,
   }));
 
   const callbacks = {
@@ -25,15 +28,30 @@ export const Controls: React.FC = React.memo(() => {
       },
       [dispatch]
     ),
+    selectCharacter: useCallback(
+      (character: Character) => {
+        dispatch(characterActions.setCharacter(character));
+      },
+      [dispatch]
+    ),
+    goToBattle: useCallback(() => {
+      navigate('/game');
+    }, [navigate]),
   };
 
   return (
     <>
       <Header>
-        <Link to="/">Settings</Link>
+        <Button>Скачать персонаж</Button>
+        <Button>Загрузить персонаж</Button>
       </Header>
       <ControlsLayout>
-        <CharactersList characters={select.characters} />
+        <CharactersList
+          characters={select.characters}
+          selected={select.selected}
+          selectCharacter={callbacks.selectCharacter}
+          goToBattle={callbacks.goToBattle}
+        />
         <AddCharacterForm addCharacter={callbacks.addCharacter} />
       </ControlsLayout>
     </>

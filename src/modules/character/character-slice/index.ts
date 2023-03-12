@@ -2,12 +2,14 @@ import { createSlice } from '@reduxjs/toolkit';
 
 type CharacterState = {
   data: Character[];
+  selected: Character | null;
   loading: boolean;
   error: string | null;
 };
 
 export const initialState: CharacterState = {
   data: [],
+  selected: null,
   loading: false,
   error: null,
 };
@@ -18,6 +20,9 @@ const CharacterSlice = createSlice({
   reducers: {
     addCharacter(state, action) {
       state.data.push(action.payload);
+    },
+    setCharacter(state, action) {
+      state.selected = action.payload;
     },
   },
 });

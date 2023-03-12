@@ -3,7 +3,7 @@
 
 .Form {
   max-width: 740px;
-  width: 100%;
+  width: calc(50% - 10px);
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -11,9 +11,7 @@
   gap: 20px;
 }
 
-.Form__field {
-  // padding-bottom: 7px;
-}
+.Form__field {}
 
 .Form__lable {
   display: inline-block;
@@ -25,6 +23,10 @@
 }
 
 @media screen and (max-width: 767px) {
+  .Form {
+    width: 100%;
+  }
+
   .Form__lable {
     font-size: 14px;
   }

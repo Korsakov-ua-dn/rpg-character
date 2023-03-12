@@ -16,7 +16,8 @@
 }
 
 @media screen and (max-width: 767px) {
-  // .Controls-layout {
-  //   padding: 0 20px;
-  // }
+  .Controls-layout {
+    flex-direction: column-reverse;
+    align-items: center;
+  }
 }

@@ -16,13 +16,22 @@
   }
 
   & input:focus {
-    outline: none;
+    outline: none; width: 100%;
+    padding: 0 12px;
+    display: block;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
   }
 
   & .Input-text__view {
     font-size: 18px;
     line-height: 20px;
-    // color: $font-color-grey;
+    width: 100%;
+    display: block;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
   }
 }
 

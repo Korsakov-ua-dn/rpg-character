@@ -1,6 +1,5 @@
 import React from 'react';
 import { Formik, FormikHelpers } from 'formik';
-import { useNavigate } from 'react-router';
 
 import { Button } from '../../../../components/button';
 
@@ -25,7 +24,6 @@ interface FormikState {
 export type FieldName = keyof FormikState;
 
 export const AddCharacterForm: React.FC<IProps> = React.memo((props) => {
-  // const navigate = useNavigate();
   return (
     <Formik
       initialValues={{
@@ -42,7 +40,6 @@ export const AddCharacterForm: React.FC<IProps> = React.memo((props) => {
         resetForm();
         // alert(JSON.stringify(values, null, 2));
         props.addCharacter({ id: '1', ...values });
-        // navigate('/game');
       }}
     >
       {({ values, isSubmitting, handleSubmit, setFieldValue }) => {
@@ -51,6 +48,7 @@ export const AddCharacterForm: React.FC<IProps> = React.memo((props) => {
         const max = 100;
         // подсчет остатка баллов доступных для распределения
         const surplus = 100 - (power + dexterity + intelligence + charisma);
+        const disabled = !values.name || surplus !== 0; // disabled submit form
 
         return (
           <Form onSubmit={handleSubmit}>
@@ -96,7 +94,9 @@ export const AddCharacterForm: React.FC<IProps> = React.memo((props) => {
               setFieldValue={setFieldValue}
               disabled={isSubmitting}
             />
-            <Button type="submit">Добавить персонаж</Button>
+            <Button disabled={disabled} type="submit">
+              Добавить персонаж
+            </Button>
           </Form>
         );
       }}
