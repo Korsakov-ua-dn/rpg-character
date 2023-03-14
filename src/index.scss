@@ -1,5 +1,9 @@
 @import './scss/variables.scss';
 
+:root {
+  --header-height: 60px;
+}
+
 *,
 *::after,
 *::before {
@@ -52,4 +56,10 @@ label,
 input {
   font-family: $font;
   color: $font-color;
+}
+
+@media screen and (max-width: 767px) {
+  :root {
+    --header-height: 40px;
+  }
 }

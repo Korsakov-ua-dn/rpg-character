@@ -1,16 +1,21 @@
 @import '../../scss/variables.scss';
-@import "../../scss/mixines.scss";
+@import '../../scss/mixines.scss';
 
 .Header {
-    height: 60px;
-    width: 100%;
-    background-color: $color-light-yellow;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 1;
+  height: var(--header-height);
+  width: 100%;
+  background-color: $color-light-yellow;
+  border: 1px solid $color-grey;
 }
 
 .Header__container {
-    height: 100%;
-    width: 100%;
-    @include flexCenter();
-    justify-content: flex-start;
-    gap: 20px;
+  height: 100%;
+  width: 100%;
+  @include flexCenter();
+  justify-content: flex-start;
+  gap: 20px;
 }

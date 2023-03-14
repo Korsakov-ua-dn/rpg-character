@@ -1,0 +1,47 @@
+@import '../../../../scss/mixines.scss';
+@import '../../../../scss/variables.scss';
+
+.Battle-head {
+  width: 100%;
+  @include flexCenter();
+  min-height: 20px;
+}
+
+.Battle-head__health {
+  width: 100%;
+  height: 100%;
+  border: 1px solid $color-grey;
+}
+
+.Battle-head__names {
+  display: flex;
+  align-items: baseline;
+  font-size: 16px;
+  line-height: 20px;
+}
+
+.Battle-head__name {
+  width: 120px;
+  height: 100%;
+  padding: 0 10px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  text-align: center;
+  @include notBreakWord();
+}
+
+@media screen and (max-width: 767px) {
+  .Battle-head {
+    min-height: 16px;
+  }
+
+  .Battle-head__names {
+    font-size: 14px;
+    line-height: 16px;
+  }
+
+  .Battle-head__name {
+    width: 100px;
+  }
+}

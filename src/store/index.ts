@@ -1,9 +1,11 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 
 import { characterReducer } from '../modules/character';
+import { battleReducer } from '../modules/battle';
 
 const rootReducer = combineReducers({
   character: characterReducer,
+  battle: battleReducer,
 });
 
 export const store = configureStore({

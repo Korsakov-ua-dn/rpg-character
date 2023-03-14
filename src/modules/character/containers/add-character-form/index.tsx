@@ -4,13 +4,14 @@ import { Formik, FormikHelpers } from 'formik';
 import { Button } from '../../../../components/button';
 
 import Form from '../../components/form';
-import { Character } from '../../character-slice';
 
 import BaseSettingField from '../base-setting-field';
 import NameField from '../name-field';
 
+import type { BaseCharacterSettings } from '../../character-slice';
+
 interface IProps {
-  addCharacter: (character: Character) => void;
+  addCharacter: (values: BaseCharacterSettings) => void;
 }
 
 interface FormikState {
@@ -39,15 +40,15 @@ export const AddCharacterForm: React.FC<IProps> = React.memo((props) => {
       ) => {
         resetForm();
         // alert(JSON.stringify(values, null, 2));
-        props.addCharacter({ id: '1', ...values });
+        props.addCharacter(values);
       }}
     >
       {({ values, isSubmitting, handleSubmit, setFieldValue }) => {
         const { power, dexterity, intelligence, charisma } = values;
         const min = 0;
-        const max = 100;
+        const max = 10;
         // подсчет остатка баллов доступных для распределения
-        const surplus = 100 - (power + dexterity + intelligence + charisma);
+        const surplus = max - (power + dexterity + intelligence + charisma);
         const disabled = !values.name || surplus !== 0; // disabled submit form
 
         return (

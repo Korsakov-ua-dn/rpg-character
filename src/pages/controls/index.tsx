@@ -5,12 +5,19 @@ import { Button } from '../../components/button';
 import { ControlsLayout } from '../../components/controls-layout';
 import Header from '../../components/header';
 import { useAppDispatch, useAppSelector } from '../../hooks';
+import { battleActions } from '../../modules/battle';
 import {
   AddCharacterForm,
   CharactersList,
   characterActions,
 } from '../../modules/character';
-import { Character } from '../../modules/character/character-slice';
+
+import { createCharacter } from '../../utils/create-character';
+
+import type {
+  BaseCharacterSettings,
+  Character,
+} from '../../modules/character/character-slice';
 
 export const Controls: React.FC = React.memo(() => {
   const dispatch = useAppDispatch();
@@ -23,7 +30,8 @@ export const Controls: React.FC = React.memo(() => {
 
   const callbacks = {
     addCharacter: useCallback(
-      (character: Character) => {
+      (values: BaseCharacterSettings) => {
+        const character = createCharacter(values);
         dispatch(characterActions.addCharacter(character));
       },
       [dispatch]
@@ -35,15 +43,16 @@ export const Controls: React.FC = React.memo(() => {
       [dispatch]
     ),
     goToBattle: useCallback(() => {
+      dispatch(battleActions.setCharacter(select.selected));
       navigate('/game');
-    }, [navigate]),
+    }, [dispatch, navigate, select.selected]),
   };
 
   return (
     <>
       <Header>
-        <Button>Скачать персонаж</Button>
-        <Button>Загрузить персонаж</Button>
+        <Button>Скачать</Button>
+        <Button>Загрузить</Button>
       </Header>
       <ControlsLayout>
         <CharactersList

@@ -19,3 +19,10 @@
   opacity: 0.5;
   cursor: auto;
 }
+
+@media screen and (max-width: 767px) {
+  .Button {
+    height: 28px;
+    font-size: 14px;
+  }
+}

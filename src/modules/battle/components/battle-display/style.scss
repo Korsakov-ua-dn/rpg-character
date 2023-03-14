@@ -1,0 +1,10 @@
+@import "../../../../scss/mixines.scss";
+@import "../../../../scss/variables.scss";
+
+.Battle-display {
+    @include flexCenter();
+    justify-content: space-between;
+    gap: 30px;
+    flex-grow: 1;
+    height: 0px;
+}
