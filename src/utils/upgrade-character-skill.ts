@@ -1,4 +1,4 @@
-import { Character, Level } from '../modules/character/character-slice';
+import type { Character, Level } from '../modules/character/types';
 
 export function upgradeCharacterSkill(
   character: Character,

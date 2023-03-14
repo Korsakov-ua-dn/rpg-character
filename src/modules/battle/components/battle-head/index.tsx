@@ -13,15 +13,15 @@ export const BattleHead: React.FC<IProps> = React.memo(
   ({ character, enemy, characterHealth, enemyHealth }) => {
     // запоминаем значение при полной жизни
     const fullCharacterHealth = useRef(characterHealth);
+    // количество жизни которое осталось в %
     const percentOfCharacterHealth = Math.ceil(
       (characterHealth / fullCharacterHealth.current) * 100
     );
-    const lostCharacterHealth = 100 - percentOfCharacterHealth;
     const styleCharacter = {
       background: `linear-gradient(
         to right,
         blue 0 ${percentOfCharacterHealth}%,
-        red 0 ${lostCharacterHealth}%
+        red ${percentOfCharacterHealth}% 100%
         )`,
     };
 
@@ -29,12 +29,11 @@ export const BattleHead: React.FC<IProps> = React.memo(
     const percentOfEnemyHealth = Math.ceil(
       (enemyHealth / fullEnemyHealth.current) * 100
     );
-    const lostEnemyHealth = 100 - percentOfEnemyHealth;
     const styleEnemy = {
       background: `linear-gradient(
           to right,
           blue 0 ${percentOfEnemyHealth}%,
-          red 0 ${lostEnemyHealth}%
+          red ${percentOfEnemyHealth}% 100%
         )`,
     };
 

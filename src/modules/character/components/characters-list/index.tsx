@@ -1,10 +1,10 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 
 import { Button } from '../../../../components/button';
 
-import { Character } from '../../character-slice';
-
 import { CharactersListItem } from '../characters-list-item';
+
+import type { Character } from '../../types';
 
 import './style.scss';
 

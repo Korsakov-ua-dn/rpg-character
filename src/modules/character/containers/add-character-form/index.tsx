@@ -8,7 +8,7 @@ import Form from '../../components/form';
 import BaseSettingField from '../base-setting-field';
 import NameField from '../name-field';
 
-import type { BaseCharacterSettings } from '../../character-slice';
+import type { BaseCharacterSettings } from '../../types';
 
 interface IProps {
   addCharacter: (values: BaseCharacterSettings) => void;
@@ -39,7 +39,6 @@ export const AddCharacterForm: React.FC<IProps> = React.memo((props) => {
         { resetForm }: FormikHelpers<FormikState>
       ) => {
         resetForm();
-        // alert(JSON.stringify(values, null, 2));
         props.addCharacter(values);
       }}
     >

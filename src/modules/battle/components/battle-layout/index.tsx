@@ -1,14 +1,14 @@
 import React from 'react';
 
-import Layout from '../layout';
+import Layout from '../../../../components/layout';
 
-import type { BattleSattus } from '../../modules/battle/battle-slice';
+import type { BattleStatus } from '../../types';
 
 import './style.scss';
 
 interface IProps {
   children: React.ReactNode | React.ReactNode[];
-  status: BattleSattus;
+  status: BattleStatus;
 }
 
 export const BattleLayout: React.FC<IProps> = React.memo((props) => {

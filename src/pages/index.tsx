@@ -11,7 +11,7 @@ const App: React.FC = () => {
   const dispatch = useAppDispatch();
 
   useLayoutEffect(() => {
-    // dispatch();
+    // init "Main" page;
   }, [dispatch]);
 
   return (

@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react';
-import { Navigate, useNavigate } from 'react-router';
+import { Navigate } from 'react-router';
 
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import Header from '../../components/header';
@@ -9,21 +9,17 @@ import {
   BattleHead,
   battleActions,
 } from '../../modules/battle';
-import { BattleLayout } from '../../components/battle-layout';
+import { BattleLayout } from '../../modules/battle/components/battle-layout';
 import { BattleDisplay } from '../../modules/battle/components/battle-display';
 
 export const Game: React.FC = React.memo(() => {
   const dispatch = useAppDispatch();
-  // const navigate = useNavigate();
 
   const select = useAppSelector((state) => ({
     character: state.battle.character,
     enemy: state.battle.enemy,
     status: state.battle.status,
-    ch: state.character.selected,
   }));
-  // console.log('damage:', select.ch?.damage);
-  // console.log('level:', select.ch?.level);
   // console.log('level b:', select.character?.level);
 
   const callbacks = {
@@ -35,6 +31,7 @@ export const Game: React.FC = React.memo(() => {
     }, [dispatch]),
   };
 
+  // при переходе по прямой ссылке на роут "/game" редирект в меню
   if (!select.character || !select.enemy) return <Navigate to="/" replace />;
 
   return (
@@ -42,6 +39,7 @@ export const Game: React.FC = React.memo(() => {
       <Header>
         <Link to="/">Меню</Link>
       </Header>
+
       <BattleLayout status={select.status}>
         <BattleHead
           character={select.character.name}
@@ -49,6 +47,7 @@ export const Game: React.FC = React.memo(() => {
           characterHealth={select.character.health}
           enemyHealth={select.enemy.health}
         />
+
         <BattleDisplay>
           <BattleCharacter
             character={select.character}

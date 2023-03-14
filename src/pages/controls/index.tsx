@@ -2,7 +2,7 @@ import React, { useCallback } from 'react';
 import { useNavigate } from 'react-router';
 
 import { Button } from '../../components/button';
-import { ControlsLayout } from '../../components/controls-layout';
+import { ControlsLayout } from '../../modules/character/components/controls-layout';
 import Header from '../../components/header';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import { battleActions } from '../../modules/battle';
@@ -17,7 +17,7 @@ import { createCharacter } from '../../utils/create-character';
 import type {
   BaseCharacterSettings,
   Character,
-} from '../../modules/character/character-slice';
+} from '../../modules/character/types';
 
 export const Controls: React.FC = React.memo(() => {
   const dispatch = useAppDispatch();
@@ -51,9 +51,10 @@ export const Controls: React.FC = React.memo(() => {
   return (
     <>
       <Header>
-        <Button>Скачать</Button>
+        <Button disabled={!select.selected}>Скачать</Button>
         <Button>Загрузить</Button>
       </Header>
+
       <ControlsLayout>
         <CharactersList
           characters={select.characters}

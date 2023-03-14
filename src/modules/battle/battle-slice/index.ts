@@ -2,15 +2,16 @@ import { createSlice } from '@reduxjs/toolkit';
 
 import { createCharacter } from '../../../utils/create-character';
 
-import type { Character } from '../../character/character-slice';
+import type { Character } from '../../character/types';
+import type { BattleStatus } from '../types';
 
 type BattleState = {
   character: Character | null;
   enemy: Character | null;
-  status: BattleSattus;
+  status: BattleStatus;
 };
 
-export const initialState: BattleState = {
+const initialState: BattleState = {
   character: null,
   enemy: null,
   status: null,
@@ -54,6 +55,3 @@ const BattleSlice = createSlice({
 
 export const battleActions = BattleSlice.actions;
 export const battleReducer = BattleSlice.reducer;
-
-//types
-export type BattleSattus = 'win' | 'lose' | null;

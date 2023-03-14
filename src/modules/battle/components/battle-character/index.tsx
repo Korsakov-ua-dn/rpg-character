@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Character } from '../../../character/character-slice';
+import type { Character } from '../../../character/types';
 
 import './style.scss';
 
