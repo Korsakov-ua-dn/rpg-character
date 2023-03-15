@@ -3,9 +3,9 @@ import { Formik, FormikHelpers } from 'formik';
 
 import { Button } from '../../../../components/button';
 
-import Form from '../../components/form';
+import { Form } from '../../components/form';
 
-import BaseSettingField from '../base-setting-field';
+import { BaseSettingField } from '../base-setting-field';
 import NameField from '../name-field';
 
 import type { BaseCharacterSettings } from '../../types';

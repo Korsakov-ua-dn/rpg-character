@@ -1,7 +1,7 @@
 import React, { useLayoutEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
 
-import MainLayout from '../containers/main-layout';
+import { MainLayout } from '../containers/main-layout';
 import { useAppDispatch } from '../hooks';
 
 import { Controls } from './controls';
@@ -11,7 +11,7 @@ const App: React.FC = () => {
   const dispatch = useAppDispatch();
 
   useLayoutEffect(() => {
-    // init "Main" page;
+    // init App;
   }, [dispatch]);
 
   return (

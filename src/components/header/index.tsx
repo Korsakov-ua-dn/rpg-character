@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Layout from '../layout';
+import { Layout } from '../layout';
 
 import './style.scss';
 
@@ -8,7 +8,7 @@ interface IProps {
   children: React.ReactNode | React.ReactNode[];
 }
 
-const Header: React.FC<IProps> = (props) => {
+export const Header: React.FC<IProps> = React.memo((props) => {
   return (
     <header className="Header">
       <Layout>
@@ -16,6 +16,4 @@ const Header: React.FC<IProps> = (props) => {
       </Layout>
     </header>
   );
-};
-
-export default React.memo(Header) as typeof Header;
+});

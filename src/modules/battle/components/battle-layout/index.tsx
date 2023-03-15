@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Layout from '../../../../components/layout';
+import { Layout } from '../../../../components/layout';
 
 import type { BattleStatus } from '../../types';
 
@@ -14,8 +14,8 @@ interface IProps {
 export const BattleLayout: React.FC<IProps> = React.memo((props) => {
   return (
     <Layout>
-      {props.status !== null && <div className="Battle-overlay" />}
       <div className="Battle-layout">{props.children}</div>
+      {props.status !== null && <div className="Battle-overlay" />}
     </Layout>
   );
 });

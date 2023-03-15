@@ -1,3 +1,4 @@
+import { FieldInputProps } from 'formik';
 import React, { DetailedHTMLProps, InputHTMLAttributes } from 'react';
 import './style.scss';
 
@@ -7,34 +8,30 @@ type DefaultInputPropsType = DetailedHTMLProps<
   HTMLInputElement
 >;
 type PropsType = DefaultInputPropsType & {
-  formikProps: any;
+  formikProps: FieldInputProps<number>;
   isActive: boolean;
 };
 
-const InputText: React.FC<PropsType> = ({
-  formikProps,
-  isActive,
-  ...restProps
-}) => {
-  /* вытащил value для того что бы инпут стал неуправляемым
+export const InputText: React.FC<PropsType> = React.memo(
+  ({ formikProps, isActive, ...restProps }) => {
+    /* вытащил value для того что бы инпут стал неуправляемым
      это позволит удобно редактировать данные пользователю */
-  const { value, ...rest } = formikProps;
+    const { value, ...rest } = formikProps;
 
-  return (
-    <div className="Input-text">
-      {isActive ? (
-        <input
-          type="text"
-          {...rest}
-          {...restProps}
-          autoFocus
-          defaultValue={value}
-        />
-      ) : (
-        <span className="Input-text__view">{value}</span>
-      )}
-    </div>
-  );
-};
-
-export default React.memo(InputText) as typeof InputText;
+    return (
+      <div className="Input-text">
+        {isActive ? (
+          <input
+            type="text"
+            {...rest}
+            {...restProps}
+            autoFocus
+            defaultValue={value}
+          />
+        ) : (
+          <span className="Input-text__view">{value}</span>
+        )}
+      </div>
+    );
+  }
+);

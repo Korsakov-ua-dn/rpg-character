@@ -2,7 +2,7 @@ import React, { useCallback } from 'react';
 import { Navigate } from 'react-router';
 
 import { useAppDispatch, useAppSelector } from '../../hooks';
-import Header from '../../components/header';
+import { Header } from '../../components/header';
 import { Link } from '../../components/link';
 import {
   BattleCharacter,
@@ -20,12 +20,12 @@ export const Game: React.FC = React.memo(() => {
     enemy: state.battle.enemy,
     status: state.battle.status,
   }));
-  // console.log('level b:', select.character?.level);
 
   const callbacks = {
     takeDamageCharacter: useCallback(() => {
       dispatch(battleActions.takeDamageCharacter());
     }, [dispatch]),
+
     takeDamageEnemy: useCallback(() => {
       dispatch(battleActions.takeDamageEnemy());
     }, [dispatch]),
@@ -42,20 +42,20 @@ export const Game: React.FC = React.memo(() => {
 
       <BattleLayout status={select.status}>
         <BattleHead
-          character={select.character.name}
-          enemy={select.enemy.name}
+          characterName={select.character.name}
+          enemyName={select.enemy.name}
           characterHealth={select.character.health}
           enemyHealth={select.enemy.health}
         />
 
         <BattleDisplay>
           <BattleCharacter
-            character={select.character}
+            skills={select.character.skills}
             denotation="character"
             takeDamage={callbacks.takeDamageCharacter}
           />
           <BattleCharacter
-            character={select.enemy}
+            skills={select.enemy.skills}
             denotation="enemy"
             takeDamage={callbacks.takeDamageEnemy}
           />

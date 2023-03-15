@@ -1,23 +1,23 @@
 import React from 'react';
 
-import type { Character } from '../../../character/types';
+import type { Skills } from '../../../character/types';
 
 import './style.scss';
 
 interface IProps {
-  character: Character;
-  denotation: string;
+  skills: Skills; // изменяется только при старте новоого боя, не тригерит перерендер
+  denotation: 'character' | 'enemy';
   takeDamage: () => void;
 }
 
 export const BattleCharacter: React.FC<IProps> = React.memo(
-  ({ character, denotation, takeDamage }) => {
+  ({ skills, denotation, takeDamage }) => {
     const imagePath = require(`../../../../assets/images/${denotation}.png`);
     const classN = `Battle-character ${denotation === 'enemy' ? 'enemy' : ''}`;
     return (
       <div className={classN}>
         <ul className="Battle-character__skils">
-          {character.skills.map((skill) => {
+          {skills.map((skill) => {
             return (
               <li key={skill.title}>
                 {denotation === 'enemy'
@@ -27,13 +27,14 @@ export const BattleCharacter: React.FC<IProps> = React.memo(
             );
           })}
         </ul>
-        <div>
+
+        <div className="Battle-character__image">
           <img
             draggable="false"
             src={imagePath}
-            alt=""
-            // width={300}
-            // height={300}
+            alt={denotation}
+            width={475}
+            height={490}
             onClick={takeDamage}
           />
         </div>

@@ -3,22 +3,7 @@ export interface Character extends BaseCharacterSettings {
   lifeForce: { title: 'Жизненная сила'; value: number };
   evasion: { title: 'Уклонение'; value: number };
   energy: { title: 'Энергичность'; value: number };
-  skills: [
-    { title: 'Атака'; value: number; maxValue: number },
-    { title: 'Стелс'; value: number; maxValue: number },
-    { title: 'Стрельба из лука'; value: number; maxValue: number },
-    { title: 'Обучаемость'; value: number; maxValue: number },
-    { title: 'Выживание'; value: number; maxValue: number },
-    { title: 'Медицина'; value: number; maxValue: number },
-    { title: 'Запугивание'; value: number; maxValue: number },
-    { title: 'Проницательность'; value: number; maxValue: number },
-    { title: 'Внешний вид'; value: number; maxValue: number },
-    {
-      title: 'Манипулирование';
-      value: number;
-      maxValue: number;
-    }
-  ];
+  skills: Skills;
   level: Level;
   damage: number;
   health: number;
@@ -33,3 +18,18 @@ export interface BaseCharacterSettings {
 }
 
 export type Level = 0 | 1 | 2 | 3 | 4 | 5;
+
+export type Skills = Skill[];
+
+type Skill = { title: SkillTitle; value: number; maxValue: number };
+type SkillTitle =
+  | 'Атака'
+  | 'Стелс'
+  | 'Стрельба из лука'
+  | 'Обучаемость'
+  | 'Выживание'
+  | 'Медицина'
+  | 'Запугивание'
+  | 'Проницательность'
+  | 'Внешний вид'
+  | 'Манипулирование';

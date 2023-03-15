@@ -1,4 +1,4 @@
-// очищает все не числа и приводит результат к числу
+// удаляет все не числа в строке и приводит результат к числу
 function clearStringToNumber(string: string) {
   const numberPattern = /\d+/g;
   const res = string.match(numberPattern)?.join('');

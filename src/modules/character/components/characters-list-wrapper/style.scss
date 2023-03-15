@@ -1,0 +1,8 @@
+@import "../../../../scss/variables.scss";
+@import "../../../../scss/mixines.scss";
+
+.Characters-wrapper {
+  width: calc(50% - 10px);
+  @include flexCenter();
+  flex-direction: column;
+}

@@ -1,12 +1,12 @@
 import React, { MouseEvent, useCallback, useState } from 'react';
 import { useField } from 'formik';
 
-import InputText from '../../components/input-text';
-import FieldWrapper from '../../components/field-wrapper';
+import { InputText } from '../../components/input-text';
+import { FieldWrapper } from '../../components/field-wrapper';
 
 import type { FieldName } from '../add-character-form';
 
-type PropsType = {
+interface IProps {
   lable: string;
   fieldName: FieldName;
   disabled: boolean;
@@ -15,9 +15,9 @@ type PropsType = {
     value: any,
     shouldValidate?: boolean | undefined
   ) => void;
-};
+}
 
-const NameField: React.FC<PropsType> = (props) => {
+const NameField: React.FC<IProps> = (props) => {
   const [field] = useField(props.fieldName);
   const [isActive, setActive] = useState(false);
 
@@ -36,7 +36,7 @@ const NameField: React.FC<PropsType> = (props) => {
       lable={props.lable}
       disabled={props.disabled}
       isActive={isActive}
-      onClick={!props.disabled ? callbacks.onClick : () => {}}
+      onClick={callbacks.onClick}
       onBlur={callbacks.onBlur}
     >
       <InputText

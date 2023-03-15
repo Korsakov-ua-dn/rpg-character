@@ -4,12 +4,10 @@ import './style.scss';
 
 type PropsType = SliderProps;
 
-const Range: React.FC<PropsType> = (props) => {
+export const Range: React.FC<PropsType> = React.memo((props) => {
   return (
     <div className="Range">
       <Slider {...props} />
     </div>
   );
-};
-
-export default React.memo(Range) as typeof Range;
+});

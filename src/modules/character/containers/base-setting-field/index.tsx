@@ -9,13 +9,13 @@ import { useField } from 'formik';
 
 import { prepareValue } from '../../utils/prepare-value';
 
-import InputText from '../../components/input-text';
-import Range from '../../components/range';
-import FieldWrapper from '../../components/field-wrapper';
+import { InputText } from '../../components/input-text';
+import { Range } from '../../components/range';
+import { FieldWrapper } from '../../components/field-wrapper';
 
 import type { FieldName } from '../add-character-form';
 
-type PropsType = {
+interface IProps {
   lable: string;
   fieldName: FieldName;
   min: number;
@@ -27,9 +27,9 @@ type PropsType = {
     value: any,
     shouldValidate?: boolean | undefined
   ) => void;
-};
+}
 
-const BaseSettingField: React.FC<PropsType> = (props) => {
+export const BaseSettingField: React.FC<IProps> = React.memo((props) => {
   const [field] = useField(props.fieldName);
   const [isActive, setActive] = useState(false);
 
@@ -72,7 +72,7 @@ const BaseSettingField: React.FC<PropsType> = (props) => {
       lable={props.lable}
       disabled={props.disabled}
       isActive={isActive}
-      onClick={!props.disabled ? callbacks.onClick : () => {}}
+      onClick={callbacks.onClick}
       onBlur={callbacks.onBlur}
     >
       <InputText
@@ -92,6 +92,4 @@ const BaseSettingField: React.FC<PropsType> = (props) => {
       />
     </FieldWrapper>
   );
-};
-
-export default React.memo(BaseSettingField) as typeof BaseSettingField;
+});

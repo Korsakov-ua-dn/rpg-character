@@ -2,16 +2,16 @@ import React, { MouseEvent } from 'react';
 
 import './style.scss';
 
-type PropsType = {
+interface IProps {
   lable: string;
   disabled: boolean;
   isActive: boolean;
   onClick: (e: MouseEvent<HTMLDivElement>) => void;
   onBlur: () => void;
   children: React.ReactNode | React.ReactNode[];
-};
+}
 
-const FieldWrapper: React.FC<PropsType> = (props) => {
+export const FieldWrapper: React.FC<IProps> = React.memo((props) => {
   const ClassN = `
     Form__field Setting-field
     ${props.isActive ? 'active' : ''}
@@ -19,15 +19,9 @@ const FieldWrapper: React.FC<PropsType> = (props) => {
   `;
 
   return (
-    <div
-      className={ClassN}
-      onClick={!props.disabled ? props.onClick : () => {}}
-      onBlur={props.onBlur}
-    >
+    <div className={ClassN} onClick={props.onClick} onBlur={props.onBlur}>
       <label className="Form__lable">{props.lable}</label>
       <div className="Setting-field__inputs-wrapper">{props.children}</div>
     </div>
   );
-};
-
-export default React.memo(FieldWrapper) as typeof FieldWrapper;
+});

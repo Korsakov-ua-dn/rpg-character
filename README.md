@@ -10,7 +10,7 @@
 
 ### Ссылка на приложение развернутое на хостинге vercel:
 
-https://rpg-character.vercel.app/
+https://rpg-character-theta.vercel.app/
 
 ## Технологический стек:
 

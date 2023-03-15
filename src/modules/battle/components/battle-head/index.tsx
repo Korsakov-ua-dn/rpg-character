@@ -3,14 +3,14 @@ import React, { useRef } from 'react';
 import './style.scss';
 
 interface IProps {
-  character: string;
-  enemy: string;
+  characterName: string;
+  enemyName: string;
   characterHealth: number;
   enemyHealth: number;
 }
 
 export const BattleHead: React.FC<IProps> = React.memo(
-  ({ character, enemy, characterHealth, enemyHealth }) => {
+  ({ characterName, enemyName, characterHealth, enemyHealth }) => {
     // запоминаем значение при полной жизни
     const fullCharacterHealth = useRef(characterHealth);
     // количество жизни которое осталось в %
@@ -41,9 +41,9 @@ export const BattleHead: React.FC<IProps> = React.memo(
       <div className="Battle-head">
         <div className="Battle-head__health" style={styleCharacter} />
         <div className="Battle-head__names">
-          <span className="Battle-head__name">{character}</span>
+          <span className="Battle-head__name">{characterName}</span>
           <b>VS</b>
-          <span className="Battle-head__name">{enemy}</span>
+          <span className="Battle-head__name">{enemyName}</span>
         </div>
         <div className="Battle-head__health" style={styleEnemy} />
       </div>

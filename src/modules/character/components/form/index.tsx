@@ -1,17 +1,16 @@
 import React from 'react';
+
 import './style.scss';
 
-type PropsType = {
+interface IProps {
   onSubmit: (e?: React.FormEvent<HTMLFormElement> | undefined) => void;
   children: React.ReactNode | React.ReactNode[] | React.ReactElement;
-};
+}
 
-const Form: React.FC<PropsType> = (props) => {
+export const Form: React.FC<IProps> = React.memo((props) => {
   return (
     <form className="Form" onSubmit={props.onSubmit}>
       {props.children}
     </form>
   );
-};
-
-export default React.memo(Form) as typeof Form;
+});

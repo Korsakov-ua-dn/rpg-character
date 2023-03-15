@@ -1,13 +1,13 @@
 import React from 'react';
 
-import Layout from '../../components/layout';
+import { Layout } from '../../components/layout';
 import { useAppSelector } from '../../hooks';
 
 interface IProps {
   children: React.ReactNode;
 }
 
-const MainLayout: React.FC<IProps> = (props) => {
+export const MainLayout: React.FC<IProps> = React.memo((props) => {
   const select = useAppSelector((state) => ({
     loading: state.character.loading,
     error: state.character.error,
@@ -22,6 +22,4 @@ const MainLayout: React.FC<IProps> = (props) => {
       {props.children}
     </>
   );
-};
-
-export default React.memo(MainLayout);
+});

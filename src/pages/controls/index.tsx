@@ -1,18 +1,19 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useMemo } from 'react';
 import { useNavigate } from 'react-router';
 
 import { Button } from '../../components/button';
 import { ControlsLayout } from '../../modules/character/components/controls-layout';
-import Header from '../../components/header';
+import { Header } from '../../components/header';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import { battleActions } from '../../modules/battle';
+import { createCharacter } from '../../utils/create-character';
 import {
   AddCharacterForm,
   CharactersList,
+  CharactersListItem,
+  CharactersListWrapper,
   characterActions,
 } from '../../modules/character';
-
-import { createCharacter } from '../../utils/create-character';
 
 import type {
   BaseCharacterSettings,
@@ -21,7 +22,7 @@ import type {
 
 export const Controls: React.FC = React.memo(() => {
   const dispatch = useAppDispatch();
-  const navigate = useNavigate();
+  const navigate = useNavigate(); //@todo check rerender
 
   const select = useAppSelector((state) => ({
     characters: state.character.data,
@@ -36,7 +37,7 @@ export const Controls: React.FC = React.memo(() => {
       },
       [dispatch]
     ),
-    selectCharacter: useCallback(
+    onSelectCharacter: useCallback(
       (character: Character) => {
         dispatch(characterActions.setCharacter(character));
       },
@@ -48,6 +49,21 @@ export const Controls: React.FC = React.memo(() => {
     }, [dispatch, navigate, select.selected]),
   };
 
+  const characters = useMemo(() => {
+    return select.characters.map((character: Character, i: number) => {
+      return (
+        <CharactersListItem
+          key={i}
+          i={i}
+          character={character}
+          selected={character === select.selected}
+          onSelectCharacter={callbacks.onSelectCharacter}
+        />
+      );
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [callbacks.onSelectCharacter, select.characters, select.selected]);
+
   return (
     <>
       <Header>
@@ -56,12 +72,16 @@ export const Controls: React.FC = React.memo(() => {
       </Header>
 
       <ControlsLayout>
-        <CharactersList
-          characters={select.characters}
-          selected={select.selected}
-          selectCharacter={callbacks.selectCharacter}
-          goToBattle={callbacks.goToBattle}
-        />
+        <CharactersListWrapper>
+          <CharactersList>{characters}</CharactersList>
+
+          {!!select.characters.length && (
+            <Button disabled={!select.selected} onClick={callbacks.goToBattle}>
+              В бой
+            </Button>
+          )}
+        </CharactersListWrapper>
+
         <AddCharacterForm addCharacter={callbacks.addCharacter} />
       </ControlsLayout>
     </>
