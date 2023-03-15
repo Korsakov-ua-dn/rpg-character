@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo } from 'react';
+import React, { useCallback, useMemo, useRef } from 'react';
 import { useNavigate } from 'react-router';
 
 import { Button } from '../../components/button';
@@ -7,6 +7,7 @@ import { Header } from '../../components/header';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import { battleActions } from '../../modules/battle';
 import { createCharacter } from '../../utils/create-character';
+import { downloadCharacter } from '../../utils/download-character';
 import {
   AddCharacterForm,
   CharactersList,
@@ -29,6 +30,10 @@ export const Controls: React.FC = React.memo(() => {
     selected: state.character.selected,
   }));
 
+  // мемоизация динамически генерируемого колбэка
+  const onDownloadRef = useRef(() => downloadCharacter(select.selected));
+  onDownloadRef.current = () => downloadCharacter(select.selected);
+
   const callbacks = {
     addCharacter: useCallback(
       (values: BaseCharacterSettings) => {
@@ -37,16 +42,22 @@ export const Controls: React.FC = React.memo(() => {
       },
       [dispatch]
     ),
+
     onSelectCharacter: useCallback(
       (character: Character) => {
         dispatch(characterActions.setCharacter(character));
       },
       [dispatch]
     ),
+
     goToBattle: useCallback(() => {
       dispatch(battleActions.setCharacter(select.selected));
       navigate('/game');
     }, [dispatch, navigate, select.selected]),
+
+    onDownloadCharacter: useCallback(() => {
+      onDownloadRef.current();
+    }, []),
   };
 
   const characters = useMemo(() => {
@@ -67,7 +78,12 @@ export const Controls: React.FC = React.memo(() => {
   return (
     <>
       <Header>
-        <Button disabled={!select.selected}>Скачать</Button>
+        <Button
+          disabled={!select.selected}
+          onClick={callbacks.onDownloadCharacter}
+        >
+          Скачать
+        </Button>
         <Button>Загрузить</Button>
       </Header>
 
