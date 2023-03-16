@@ -47,4 +47,4 @@ React, TypeScript, Redux Toolkit, SCSS, Material-UI.
 
 Завершение игры победой персонажа "Iron man 5311".
 
-![Screenshot of board](/../branch-screenshots/screenshots/menu.png?raw=true "Победа")
+![Screenshot of board](/../branch-screenshots/screenshots/win.png?raw=true "Победа")
