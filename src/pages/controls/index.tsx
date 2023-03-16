@@ -111,17 +111,17 @@ export const Controls: React.FC = React.memo(() => {
       </Header>
 
       <ControlsLayout>
-        <CharactersListWrapper>
-          <CharactersList>{characters}</CharactersList>
+        <AddCharacterForm addCharacter={callbacks.addCharacter} />
 
-          {!!select.characters.length && (
+        {!!select.characters.length && (
+          <CharactersListWrapper>
+            <CharactersList>{characters}</CharactersList>
+
             <Button disabled={!select.selected} onClick={callbacks.goToBattle}>
               В бой
             </Button>
-          )}
-        </CharactersListWrapper>
-
-        <AddCharacterForm addCharacter={callbacks.addCharacter} />
+          </CharactersListWrapper>
+        )}
       </ControlsLayout>
     </>
   );

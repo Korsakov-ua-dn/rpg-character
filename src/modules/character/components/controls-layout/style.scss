@@ -5,13 +5,14 @@
   width: 100%;
   padding: calc(20px + var(--header-height)) 0 20px 0;
   @include flexCenter();
+  flex-direction: row-reverse;
   align-items: flex-start;
   gap: 20px;
 }
 
 @media screen and (max-width: 767px) {
   .Controls-layout {
-    flex-direction: column-reverse;
+    flex-direction: column;
     align-items: center;
   }
 }

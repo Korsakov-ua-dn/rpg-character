@@ -7,7 +7,9 @@ type PropsType = SliderProps;
 export const Range: React.FC<PropsType> = React.memo((props) => {
   return (
     <div className="Range">
-      <Slider {...props} />
+      <div className="Range__container">
+        <Slider {...props} />
+      </div>
     </div>
   );
 });

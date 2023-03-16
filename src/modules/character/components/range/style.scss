@@ -1,4 +1,22 @@
 .Range {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 0 24px;
+}
+
+.Range__container {
   position: relative;
-  top: - 4px;
+  height: 4px;
+
+  & .css-187mznn-MuiSlider-root {
+    padding: 0;
+    position: absolute;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .Range {
+    padding: 0 20px;
+  }
 }
