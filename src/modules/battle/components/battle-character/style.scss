@@ -23,6 +23,7 @@
     object-position: top right;
     cursor: url(https://img.icons8.com/external-vectorslab-outline-color-vectorslab/53/null/external-Sword-gaming-vectorslab-outline-color-vectorslab.png),
       no-drop;
+    @include uselectable();
   }
 }
 
@@ -41,7 +42,7 @@
   & .Battle-character__skils {
     align-items: flex-end;
   }
-  
+
   .Battle-character__image img {
     object-position: top left;
   }

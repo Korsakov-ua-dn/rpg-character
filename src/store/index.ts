@@ -1,10 +1,10 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 
-import { characterReducer } from '../modules/character';
+import { menuReducer } from '../modules/menu';
 import { battleReducer } from '../modules/battle';
 
 const rootReducer = combineReducers({
-  character: characterReducer,
+  menu: menuReducer,
   battle: battleReducer,
 });
 

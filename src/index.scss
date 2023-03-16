@@ -58,6 +58,8 @@ input {
   color: $font-color;
 }
 
+
+// фиксит работу загрузки файла на мобильном
 input[type="file"] {
   display: block !important;
   width: 100% !important;

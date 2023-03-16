@@ -9,8 +9,8 @@ interface IProps {
 
 export const MainLayout: React.FC<IProps> = React.memo((props) => {
   const select = useAppSelector((state) => ({
-    loading: state.character.loading,
-    error: state.character.error,
+    loading: state.menu.loading,
+    error: state.menu.error,
   }));
 
   return (

@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router';
 import { v1 } from 'uuid';
 
 import { Button } from '../../components/button';
-import { ControlsLayout } from '../../modules/character/components/controls-layout';
+import { ControlsLayout } from '../../modules/menu/components/controls-layout';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import { battleActions } from '../../modules/battle';
 import {
@@ -18,26 +18,27 @@ import {
   CharactersList,
   CharactersListItem,
   CharactersListWrapper,
-  characterActions,
-} from '../../modules/character';
+  menuActions,
+} from '../../modules/menu';
 
-import {
+import type {
   BaseCharacterSettings,
   Character,
-} from '../../modules/character/types';
+} from '../../modules/menu/types';
 
 export const Controls: React.FC = React.memo(() => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
   const select = useAppSelector((state) => ({
-    characters: state.character.data,
-    selected: state.character.selected,
+    characters: state.menu.characters,
+    selected: state.menu.selected,
   }));
 
   // мемоизация динамически генерируемых колбэков
   const onDownloadRef = useRef(() => downloadCharacter(select.selected));
   onDownloadRef.current = () => downloadCharacter(select.selected);
+
   const goToBattleRef = useRef(() => {
     dispatch(battleActions.setCharacter(select.selected));
   });
@@ -49,14 +50,14 @@ export const Controls: React.FC = React.memo(() => {
     addCharacter: useCallback(
       (values: BaseCharacterSettings) => {
         const character = createCharacter(values);
-        dispatch(characterActions.addCharacter(character));
+        dispatch(menuActions.addCharacter(character));
       },
       [dispatch]
     ),
 
     onSelectCharacter: useCallback(
       (character: Character) => {
-        dispatch(characterActions.setCharacter(character));
+        dispatch(menuActions.setCharacter(character));
       },
       [dispatch]
     ),
@@ -77,7 +78,7 @@ export const Controls: React.FC = React.memo(() => {
       const data = JSON.parse(jsonFile);
       if (isCharacter(data)) {
         // перезатираю id для того что бы не было двух одинаковых персонажей
-        dispatch(characterActions.addCharacter({ ...data, id: v1() }));
+        dispatch(menuActions.addCharacter({ ...data, id: v1() }));
       }
     }, [dispatch]),
   };

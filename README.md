@@ -1,12 +1,11 @@
-# "React(TS) - Форма редактиования персонажа для RPG-игры"
+# "React(TS) - Симулятор RPG-игры"
 
 ## Функционал:
 
-
-
-### Скриншот приложения из браузера:
-
-
+- создание персонажа, выбор базовых параметров;
+- экспортировать/импорт персонажа в json формате;
+- прокачивание навыков персонажа за нанесение урона врагу;
+- нанесение урона персонажу;
 
 ### Ссылка на приложение развернутое на хостинге vercel:
 
@@ -14,7 +13,7 @@ https://rpg-character-theta.vercel.app/
 
 ## Технологический стек:
 
-React, TypeScript, Redux Toolkit, SCSS.
+React, TypeScript, Redux Toolkit, SCSS, Material-UI.
 
 ## Требования
 
@@ -36,5 +35,16 @@ React, TypeScript, Redux Toolkit, SCSS.
 
 `npm run build`
 
-## Комментарии к проекту:
+### Скриншоты приложения из браузера:
 
+Меню выбора персонажа для игры.
+
+![Screenshot of board](/../branch-screenshots/screenshots/menu.png?raw=true "Меню")
+
+Экран сражения с отображением оставшейся жизненной силы, имени и скилов игроков.
+
+![Screenshot of board](/../branch-screenshots/screenshots/battle.png?raw=true "Ход битвы")
+
+Завершение игры победой персонажа "Iron man 5311".
+
+![Screenshot of board](/../branch-screenshots/screenshots/menu.png?raw=true "Победа")

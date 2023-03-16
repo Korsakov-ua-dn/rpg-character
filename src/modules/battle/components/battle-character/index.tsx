@@ -1,6 +1,6 @@
 import React from 'react';
 
-import type { Skills } from '../../../character/types';
+import type { Skills } from '../../../menu/types';
 
 import './style.scss';
 

@@ -15,7 +15,11 @@ export const BattleLayout: React.FC<IProps> = React.memo((props) => {
   return (
     <Layout>
       <div className="Battle-layout">{props.children}</div>
-      {props.status !== null && <div className="Battle-overlay" />}
+      {props.status !== null && (
+        <div className="Battle-overlay">
+          <span className="Battle-status">You {props.status}</span>
+        </div>
+      )}
     </Layout>
   );
 });

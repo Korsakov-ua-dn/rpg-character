@@ -1,5 +1,5 @@
-@import "../../../../scss/mixines.scss";
-@import "../../../../scss/variables.scss";
+@import '../../../../scss/mixines.scss';
+@import '../../../../scss/variables.scss';
 
 .Battle-layout {
   width: 100%;
@@ -18,4 +18,15 @@
   bottom: 0;
   background-color: #000000;
   opacity: 0.4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 0;
+}
+
+.Battle-status {
+  color: #ffffff;
+  font-size: 30px;
+  transform: translateY(calc(var(--header-height)/2));
+  @include uselectable();
 }

@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 import { createCharacter } from '../../../utils';
 
-import type { Character } from '../../character/types';
+import type { Character } from '../../menu/types';
 import type { BattleStatus } from '../types';
 
 type BattleState = {
