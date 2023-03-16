@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-import { upgradeCharacterSkill } from '../../../utils/upgrade-character-skill';
+import { upgradeCharacterSkill } from '../../../utils';
 
 import { battleActions } from '../../battle';
 

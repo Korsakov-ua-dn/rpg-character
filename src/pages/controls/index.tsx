@@ -6,8 +6,12 @@ import { Button } from '../../components/button';
 import { ControlsLayout } from '../../modules/character/components/controls-layout';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import { battleActions } from '../../modules/battle';
-import { createCharacter } from '../../utils/create-character';
-import { downloadCharacter } from '../../utils/download-character';
+import {
+  createCharacter,
+  downloadCharacter,
+  isCharacter,
+  jsonUploadInput,
+} from '../../utils';
 import { Header } from '../../components/header';
 import {
   AddCharacterForm,
@@ -21,8 +25,6 @@ import {
   BaseCharacterSettings,
   Character,
 } from '../../modules/character/types';
-import { isCharacter } from '../../utils/is-character';
-import { jsonUploadInput } from '../../utils/json-upload-input';
 
 export const Controls: React.FC = React.memo(() => {
   const dispatch = useAppDispatch();
@@ -74,6 +76,7 @@ export const Controls: React.FC = React.memo(() => {
 
       const data = JSON.parse(jsonFile);
       if (isCharacter(data)) {
+        // перезатираю id для того что бы не было двух одинаковых персонажей
         dispatch(characterActions.addCharacter({ ...data, id: v1() }));
       }
     }, [dispatch]),

@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-import { createCharacter } from '../../../utils/create-character';
+import { createCharacter } from '../../../utils';
 
 import type { Character } from '../../character/types';
 import type { BattleStatus } from '../types';

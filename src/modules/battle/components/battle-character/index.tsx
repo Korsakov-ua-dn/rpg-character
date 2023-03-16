@@ -1,5 +1,7 @@
 import React from 'react';
 
+import * as images from '../../../../assets/images';
+
 import type { Skills } from '../../../character/types';
 
 import './style.scss';
@@ -12,7 +14,6 @@ interface IProps {
 
 export const BattleCharacter: React.FC<IProps> = React.memo(
   ({ skills, denotation, takeDamage }) => {
-    const imagePath = require(`../../../../assets/images/${denotation}.png`);
     const classN = `Battle-character ${denotation === 'enemy' ? 'enemy' : ''}`;
     return (
       <div className={classN}>
@@ -31,7 +32,7 @@ export const BattleCharacter: React.FC<IProps> = React.memo(
         <div className="Battle-character__image">
           <img
             draggable="false"
-            src={imagePath}
+            src={images[denotation]}
             alt={denotation}
             width={475}
             height={490}

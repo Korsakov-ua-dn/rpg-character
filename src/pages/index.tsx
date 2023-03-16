@@ -1,18 +1,16 @@
-import React, { useLayoutEffect } from 'react';
+import React, { useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
 
 import { MainLayout } from '../containers/main-layout';
-import { useAppDispatch } from '../hooks';
+import { preloadImages } from '../utils';
 
 import { Controls } from './controls';
 import { Game } from './game';
 
 const App: React.FC = () => {
-  const dispatch = useAppDispatch();
-
-  useLayoutEffect(() => {
-    // init App;
-  }, [dispatch]);
+  useEffect(() => {
+    preloadImages();
+  }, []);
 
   return (
     <MainLayout>
