@@ -39,12 +39,12 @@ React, TypeScript, Redux Toolkit, SCSS, Material-UI.
 
 Меню выбора персонажа для игры.
 
-![Screenshot of board](/../branch-screenshots/screenshots/menu.png?raw=true "Меню")
+![Menu](/../branch-screenshots/screenshots/menu.png?raw=true "Меню")
 
 Экран сражения с отображением оставшейся жизненной силы, имени и скилов игроков.
 
-![Screenshot of board](/../branch-screenshots/screenshots/battle.png?raw=true "Ход битвы")
+![Battle](/../branch-screenshots/screenshots/battle.png?raw=true "Ход битвы")
 
 Завершение игры победой персонажа "Iron man 5311".
 
-![Screenshot of board](/../branch-screenshots/screenshots/win.png?raw=true "Победа")
+![Win](/../branch-screenshots/screenshots/win.png?raw=true "Победа")
