@@ -1,4 +1,4 @@
-import * as images from '../assets/images';
+import * as images from '../../assets/images';
 
 export function preloadImages() {
   const sources = Object.values(images);

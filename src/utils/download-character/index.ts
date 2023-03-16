@@ -1,4 +1,4 @@
-import { Character } from '../modules/character/types';
+import { Character } from '../../modules/character/types';
 
 export function downloadCharacter(characterObj: Character | null) {
   if (characterObj !== null) {

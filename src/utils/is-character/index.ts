@@ -3,7 +3,7 @@ import {
   Skill,
   SkillTitle,
   skillsTitle,
-} from '../modules/character/types';
+} from '../../modules/character/types';
 
 export function isCharacter(value: unknown): value is Character {
   if (!isObject(value)) return false;

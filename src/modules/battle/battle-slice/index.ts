@@ -23,6 +23,7 @@ const BattleSlice = createSlice({
   reducers: {
     setCharacter(state, action) {
       state.character = action.payload;
+      // добавляет врага
       state.enemy = createCharacter({
         name: 'Враг',
         power: 7,

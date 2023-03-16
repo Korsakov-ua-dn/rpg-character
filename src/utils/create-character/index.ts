@@ -3,7 +3,7 @@ import { v1 } from 'uuid';
 import type {
   BaseCharacterSettings,
   Character,
-} from '../modules/character/types';
+} from '../../modules/character/types';
 
 export function createCharacter(values: BaseCharacterSettings): Character {
   const character: Character = {
