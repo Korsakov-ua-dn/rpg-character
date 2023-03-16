@@ -1,13 +1,14 @@
 import React, { useCallback, useMemo, useRef } from 'react';
 import { useNavigate } from 'react-router';
+import { v1 } from 'uuid';
 
 import { Button } from '../../components/button';
 import { ControlsLayout } from '../../modules/character/components/controls-layout';
-import { Header } from '../../components/header';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import { battleActions } from '../../modules/battle';
 import { createCharacter } from '../../utils/create-character';
 import { downloadCharacter } from '../../utils/download-character';
+import { Header } from '../../components/header';
 import {
   AddCharacterForm,
   CharactersList,
@@ -16,23 +17,31 @@ import {
   characterActions,
 } from '../../modules/character';
 
-import type {
+import {
   BaseCharacterSettings,
   Character,
 } from '../../modules/character/types';
+import { isCharacter } from '../../utils/is-character';
+import { jsonUploadInput } from '../../utils/json-upload-input';
 
 export const Controls: React.FC = React.memo(() => {
   const dispatch = useAppDispatch();
-  const navigate = useNavigate(); //@todo check rerender
+  const navigate = useNavigate();
 
   const select = useAppSelector((state) => ({
     characters: state.character.data,
     selected: state.character.selected,
   }));
 
-  // мемоизация динамически генерируемого колбэка
+  // мемоизация динамически генерируемых колбэков
   const onDownloadRef = useRef(() => downloadCharacter(select.selected));
   onDownloadRef.current = () => downloadCharacter(select.selected);
+  const goToBattleRef = useRef(() => {
+    dispatch(battleActions.setCharacter(select.selected));
+  });
+  goToBattleRef.current = () => {
+    dispatch(battleActions.setCharacter(select.selected));
+  };
 
   const callbacks = {
     addCharacter: useCallback(
@@ -51,15 +60,26 @@ export const Controls: React.FC = React.memo(() => {
     ),
 
     goToBattle: useCallback(() => {
-      dispatch(battleActions.setCharacter(select.selected));
+      goToBattleRef.current();
       navigate('/game');
-    }, [dispatch, navigate, select.selected]),
+    }, [navigate]),
 
     onDownloadCharacter: useCallback(() => {
       onDownloadRef.current();
     }, []),
+
+    uploadCharacterHandler: useCallback(async () => {
+      const jsonFile = await jsonUploadInput();
+      if (typeof jsonFile !== 'string') return;
+
+      const data = JSON.parse(jsonFile);
+      if (isCharacter(data)) {
+        dispatch(characterActions.addCharacter({ ...data, id: v1() }));
+      }
+    }, [dispatch]),
   };
 
+  // в данный момент мемоизация characters избыточна (с заделом на будущее)
   const characters = useMemo(() => {
     return select.characters.map((character: Character, i: number) => {
       return (
@@ -84,7 +104,7 @@ export const Controls: React.FC = React.memo(() => {
         >
           Скачать
         </Button>
-        <Button>Загрузить</Button>
+        <Button onClick={callbacks.uploadCharacterHandler}>Загрузить</Button>
       </Header>
 
       <ControlsLayout>

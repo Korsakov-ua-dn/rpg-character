@@ -16,4 +16,5 @@ function download(content: BlobPart, fileName: string, contentType: string) {
   a.href = URL.createObjectURL(file);
   a.download = fileName;
   a.click();
+  // URL.revokeObjectURL(file);
 }
