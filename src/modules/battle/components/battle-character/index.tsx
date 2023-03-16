@@ -1,7 +1,5 @@
 import React from 'react';
 
-// import * as images from '../../../../assets/images';
-
 import type { Skills } from '../../../character/types';
 
 import './style.scss';

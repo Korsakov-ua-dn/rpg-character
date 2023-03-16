@@ -9,7 +9,7 @@ import { Game } from './game';
 
 const App: React.FC = () => {
   useEffect(() => {
-    // preloadImages();
+    preloadImages();
   }, []);
 
   return (
