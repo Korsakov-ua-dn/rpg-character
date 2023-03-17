@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router';
 import { v1 } from 'uuid';
 
 import { Button } from '../../components/button';
+import { Header } from '../../components/header';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import { battleActions } from '../../modules/battle';
 import {
@@ -12,13 +13,12 @@ import {
   isCharacter,
   jsonUploadInput,
 } from '../../utils';
-import { Header } from '../../components/header';
 import {
-  ControlsLayout,
   CharacterForm,
   CharactersList,
   CharactersListItem,
   CharactersListWrapper,
+  ControlsLayout,
   menuActions,
 } from '../../modules/menu';
 
