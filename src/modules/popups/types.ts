@@ -1,7 +1,7 @@
 import { EditCharacter } from './components/edit-caracter';
 
 export enum POPUPS {
-  editCharacter = 'alert',
+  editCharacter = 'edit-caracter',
 }
 
 export const popups = {
