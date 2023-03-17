@@ -4,9 +4,9 @@
 .Characters-list__item {
   width: 100%;
   height: 30px;
+  padding-right: 5px;
   border: 2px solid $color-grey;
   border-radius: 8px;
-  cursor: pointer;
   @include flexCenter();
   justify-content: flex-start;
   
@@ -18,10 +18,24 @@
     white-space: nowrap;
     text-overflow: ellipsis;
     color: inherit;
+    cursor: pointer;
   }
 }
 
 .Characters-list__item.selected {
   background-color: $color-active;
   color: #ffffff;
+}
+
+.Characters-list__edit-item:hover {
+  cursor: pointer;
+  & path {
+    stroke: $font-color;
+  }
+}
+
+.Characters-list__item.selected .Characters-list__edit-item:hover {
+  & path {
+    stroke: #ffffff;
+  }
 }

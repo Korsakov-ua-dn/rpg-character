@@ -13,7 +13,7 @@ import { InputText } from '../../components/input-text';
 import { Range } from '../../components/range';
 import { FieldWrapper } from '../../components/field-wrapper';
 
-import type { FieldName } from '../add-character-form';
+import type { FieldName } from '../character-form';
 
 interface IProps {
   lable: string;

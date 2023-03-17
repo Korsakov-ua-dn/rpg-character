@@ -6,40 +6,39 @@ import { Button } from '../../../../components/button';
 import { Form } from '../../components/form';
 
 import { BaseSettingField } from '../base-setting-field';
-import NameField from '../name-field';
+import { NameField } from '../name-field';
 
 import type { BaseCharacterSettings } from '../../types';
 
 interface IProps {
-  addCharacter: (values: BaseCharacterSettings) => void;
+  initialValues?: BaseCharacterSettings;
+  actionTitle: string;
+  classFormModifier?: string;
+  onSubmit: (values: BaseCharacterSettings) => void;
 }
 
-interface FormikState {
-  name: string;
-  power: number;
-  dexterity: number;
-  intelligence: number;
-  charisma: number;
-}
+export type FieldName = keyof BaseCharacterSettings;
 
-export type FieldName = keyof FormikState;
-
-export const AddCharacterForm: React.FC<IProps> = React.memo((props) => {
+export const CharacterForm: React.FC<IProps> = React.memo((props) => {
   return (
     <Formik
-      initialValues={{
-        name: '',
-        power: 0,
-        dexterity: 0,
-        intelligence: 0,
-        charisma: 0,
-      }}
+      initialValues={
+        props.initialValues
+          ? props.initialValues
+          : {
+              name: '',
+              power: 0,
+              dexterity: 0,
+              intelligence: 0,
+              charisma: 0,
+            }
+      }
       onSubmit={(
-        values: FormikState,
-        { resetForm }: FormikHelpers<FormikState>
+        values: BaseCharacterSettings,
+        { resetForm }: FormikHelpers<BaseCharacterSettings>
       ) => {
         resetForm();
-        props.addCharacter(values);
+        props.onSubmit(values);
       }}
     >
       {({ values, isSubmitting, handleSubmit, setFieldValue }) => {
@@ -51,7 +50,7 @@ export const AddCharacterForm: React.FC<IProps> = React.memo((props) => {
         const disabled = !values.name || surplus !== 0; // disabled submit form
 
         return (
-          <Form onSubmit={handleSubmit}>
+          <Form onSubmit={handleSubmit} class={props.classFormModifier}>
             <NameField
               lable="Имя"
               fieldName="name"
@@ -95,7 +94,7 @@ export const AddCharacterForm: React.FC<IProps> = React.memo((props) => {
               disabled={isSubmitting}
             />
             <Button disabled={disabled} type="submit">
-              Добавить персонаж
+              {props.actionTitle}
             </Button>
           </Form>
         );

@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 
 import { createCharacter } from '../../../utils';
 
@@ -21,7 +21,7 @@ const BattleSlice = createSlice({
   name: 'battle',
   initialState,
   reducers: {
-    setCharacter(state, action) {
+    setCharacter(state, action: PayloadAction<Character>) {
       state.character = action.payload;
       // добавляет врага
       state.enemy = createCharacter({

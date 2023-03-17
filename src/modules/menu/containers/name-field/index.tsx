@@ -4,7 +4,7 @@ import { useField } from 'formik';
 import { InputText } from '../../components/input-text';
 import { FieldWrapper } from '../../components/field-wrapper';
 
-import type { FieldName } from '../add-character-form';
+import type { FieldName } from '../character-form';
 
 interface IProps {
   lable: string;
@@ -17,7 +17,7 @@ interface IProps {
   ) => void;
 }
 
-const NameField: React.FC<IProps> = (props) => {
+export const NameField: React.FC<IProps> = React.memo((props) => {
   const [field] = useField(props.fieldName);
   const [isActive, setActive] = useState(false);
 
@@ -46,6 +46,4 @@ const NameField: React.FC<IProps> = (props) => {
       />
     </FieldWrapper>
   );
-};
-
-export default React.memo(NameField) as typeof NameField;
+});

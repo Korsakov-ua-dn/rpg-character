@@ -9,17 +9,21 @@ import { battleActions } from '../../modules/battle';
 import {
   createCharacter,
   downloadCharacter,
+  editCharacter,
   isCharacter,
   jsonUploadInput,
 } from '../../utils';
 import { Header } from '../../components/header';
 import {
-  AddCharacterForm,
+  CharacterForm,
   CharactersList,
   CharactersListItem,
   CharactersListWrapper,
   menuActions,
 } from '../../modules/menu';
+
+import { popupsActions } from '../../modules/popups';
+import { POPUPS } from '../../modules/popups/types';
 
 import type {
   BaseCharacterSettings,
@@ -35,16 +39,18 @@ export const Controls: React.FC = React.memo(() => {
     selected: state.menu.selected,
   }));
 
-  // мемоизация динамически генерируемых колбэков
+  // мемоизация динамически генерируемых колбэков >>
   const onDownloadRef = useRef(() => downloadCharacter(select.selected));
   onDownloadRef.current = () => downloadCharacter(select.selected);
 
-  const goToBattleRef = useRef(() => {
-    dispatch(battleActions.setCharacter(select.selected));
-  });
-  goToBattleRef.current = () => {
-    dispatch(battleActions.setCharacter(select.selected));
+  const goToBattleHandler = () => {
+    if (select.selected !== null) {
+      dispatch(battleActions.setCharacter(select.selected));
+    }
   };
+  const goToBattleRef = useRef(goToBattleHandler);
+  goToBattleRef.current = goToBattleHandler;
+  // <<
 
   const callbacks = {
     addCharacter: useCallback(
@@ -81,6 +87,25 @@ export const Controls: React.FC = React.memo(() => {
         dispatch(menuActions.addCharacter({ ...data, id: v1() }));
       }
     }, [dispatch]),
+
+    onEditCharacter: useCallback(
+      (character: Character) => {
+        // Создаем объект модального окна
+        const popupObj = {
+          name: POPUPS.editCharacter,
+          onClose: (values?: BaseCharacterSettings) => {
+            dispatch(popupsActions.close(popupObj));
+            values &&
+              dispatch(
+                menuActions.editCharacter(editCharacter(values, character.id))
+              );
+          },
+          character,
+        };
+        dispatch(popupsActions.open(popupObj));
+      },
+      [dispatch]
+    ),
   };
 
   // в данный момент мемоизация characters избыточна (с заделом на будущее)
@@ -93,6 +118,7 @@ export const Controls: React.FC = React.memo(() => {
           character={character}
           selected={character === select.selected}
           onSelectCharacter={callbacks.onSelectCharacter}
+          onEditCharacter={callbacks.onEditCharacter}
         />
       );
     });
@@ -112,7 +138,10 @@ export const Controls: React.FC = React.memo(() => {
       </Header>
 
       <ControlsLayout>
-        <AddCharacterForm addCharacter={callbacks.addCharacter} />
+        <CharacterForm
+          onSubmit={callbacks.addCharacter}
+          actionTitle="Добавить персонаж"
+        />
 
         {!!select.characters.length && (
           <CharactersListWrapper>

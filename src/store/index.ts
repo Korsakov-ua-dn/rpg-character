@@ -2,10 +2,12 @@ import { combineReducers, configureStore } from '@reduxjs/toolkit';
 
 import { menuReducer } from '../modules/menu';
 import { battleReducer } from '../modules/battle';
+import { popupsReducer } from '../modules/popups';
 
 const rootReducer = combineReducers({
   menu: menuReducer,
   battle: battleReducer,
+  popups: popupsReducer,
 });
 
 export const store = configureStore({

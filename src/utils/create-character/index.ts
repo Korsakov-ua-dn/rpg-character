@@ -71,3 +71,8 @@ export function createCharacter(values: BaseCharacterSettings): Character {
   };
   return character;
 }
+
+export function editCharacter(values: BaseCharacterSettings, id: string) {
+  const character: Character = createCharacter(values);
+  return { ...character, id };
+}

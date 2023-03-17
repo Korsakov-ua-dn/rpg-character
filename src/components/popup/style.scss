@@ -1,0 +1,64 @@
+@import '../../scss/mixines.scss';
+@import '../../scss/variables.scss';
+
+.Popup {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  border-radius: 4px;
+  max-width: 100vw;
+  padding: 20px;
+}
+
+.Background {
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.Popup__content {
+  width: 500px;
+  max-width: 100%;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 4px;
+}
+
+// .Popup {
+//   position: fixed;
+//   z-index: 1;
+//   left: 0;
+//   top: 0;
+//   right: 0;
+//   bottom: 0;
+// }
+
+// .Popup__background {
+//   width: 100%;
+//   height: 100%;
+//   background-color: rgba(0, 0, 0, 0.4);
+// }
+
+// .Popup__content {
+//   position: fixed;
+//   left: 50%;
+//   top: 50%;
+//   transform: translate(-50%, -50%);
+//   overflow: hidden;
+//   overflow-y: auto;
+//   -webkit-overflow-scrolling: touch;
+//   z-index: 1;
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: center;
+//   align-items: center;
+//   border-radius: 4px;
+//   max-width: 100vw;
+//   padding: 20px;
+// }

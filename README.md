@@ -41,6 +41,10 @@ React, TypeScript, Redux Toolkit, SCSS, Material-UI.
 
 ![Menu](/../branch-screenshots/screenshots/menu.png?raw=true "Меню")
 
+Модальное окно с формой редактирования базовых параметров персонажа.
+
+![Modal](/../branch-screenshots/screenshots/popup.png?raw=true "Модальное окно")
+
 Экран сражения с отображением оставшейся жизненной силы, имени и скилов игроков.
 
 ![Battle](/../branch-screenshots/screenshots/battle.png?raw=true "Ход битвы")
