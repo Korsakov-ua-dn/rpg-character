@@ -1,19 +1,20 @@
 import React, { useCallback } from 'react';
-import { Navigate } from 'react-router';
+import { Navigate, useNavigate } from 'react-router';
 
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import { Header } from '../../components/header';
-import { Link } from '../../components/link';
+import { Button } from '../../components/button';
 import {
   BattleCharacter,
+  BattleDisplay,
   BattleHead,
+  BattleLayout,
   battleActions,
 } from '../../modules/battle';
-import { BattleLayout } from '../../modules/battle/components/battle-layout';
-import { BattleDisplay } from '../../modules/battle/components/battle-display';
 
 export const Game: React.FC = React.memo(() => {
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
   const select = useAppSelector((state) => ({
     character: state.battle.character,
@@ -29,6 +30,8 @@ export const Game: React.FC = React.memo(() => {
     takeDamageEnemy: useCallback(() => {
       dispatch(battleActions.takeDamageEnemy());
     }, [dispatch]),
+
+    onQuit: useCallback(() => navigate(-1), [navigate]),
   };
 
   // при переходе по прямой ссылке на роут "/game" редирект в меню
@@ -37,7 +40,7 @@ export const Game: React.FC = React.memo(() => {
   return (
     <>
       <Header>
-        <Link to="/">Меню</Link>
+        <Button onClick={callbacks.onQuit}>Выйти</Button>
       </Header>
 
       <BattleLayout status={select.status}>

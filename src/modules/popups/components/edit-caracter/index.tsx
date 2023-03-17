@@ -6,12 +6,12 @@ import { BaseCharacterSettings, Character } from '../../../menu/types';
 
 import './style.scss';
 
-interface IPopup {
+interface IProps {
   onClose: (values?: BaseCharacterSettings) => void;
   character?: Character;
 }
 
-export const EditCharacter: React.FC<IPopup> = React.memo(
+export const EditCharacter: React.FC<IProps> = React.memo(
   ({ onClose, character }) => {
     if (character === undefined) return null;
 

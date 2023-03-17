@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router';
 import { v1 } from 'uuid';
 
 import { Button } from '../../components/button';
-import { ControlsLayout } from '../../modules/menu/components/controls-layout';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import { battleActions } from '../../modules/battle';
 import {
@@ -15,6 +14,7 @@ import {
 } from '../../utils';
 import { Header } from '../../components/header';
 import {
+  ControlsLayout,
   CharacterForm,
   CharactersList,
   CharactersListItem,
